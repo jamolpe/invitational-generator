@@ -1,7 +1,6 @@
 package mailer
 
 import (
-	"errors"
 	"fmt"
 	"log"
 	"net/smtp"
@@ -55,17 +54,15 @@ func (m *Mailer) sendMail(clOptions MailClient) bool {
 	return true
 }
 
-func (m *Mailer) Send(templateName string, items interface{}, clOptions MailClient) error {
+func (m *Mailer) Send(templateName string, items interface{}, clOptions MailClient) {
 	parser, err := parser.ParseTemplate(templateName, items)
 	if err != nil {
-		return err
+		fmt.Println("[Error - SendMail] an error ocurred sending mail")
 	}
 	clOptions.Body = parser
 	if ok := m.sendMail(clOptions); ok {
-		log.Printf("Email has been sent to %s\n", clOptions.To)
+		log.Printf("[OK - SendMail] email sent to %s\n", clOptions.To)
 	} else {
-		log.Printf("Failed to send the email to %s\n", clOptions.To)
-		return errors.New("failed sending mail")
+		log.Printf("[Error - SendMail] an error ocurred sending mail to %s\n", clOptions.To)
 	}
-	return nil
 }

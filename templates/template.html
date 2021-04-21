@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Subscribe To My Blog - M.Labouardy</title>
+    <title>Bebma - Invitation code</title>
     <style type="text/css">
       .header {
         height: 40px;
@@ -16,6 +16,7 @@
         height: 100px;
         font-size: 18px;
         line-height: 30px;
+        max-width: 500px;
       }
       .footer {
         text-transform: uppercase;
@@ -38,31 +39,36 @@
       border="0"
       cellspacing="0"
       cellpadding="0"
+      align="center"
     >
-      <tr class="header">
-        <td style="padding: 40px">It's worth it !</td>
-      </tr>
-      <tr class="content">
-        <td style="padding: 10px">
-          <p>
-            Hi <b>{{ .username }}</b>, <br />
-            I'm <b>Javier</b>. I write about <b>DevOps</b>, <b>ChatOps</b>,
-            <b>Android</b> and much more. If you don't find me super annoying,
-            subscribe to my mailing list in order to make sure you don't miss my
-            newest blog posts.
-          </p>
-        </td>
-      </tr>
-      <tr class="footer">
-        <td style="padding: 40px">
-          Designed by
-          <a
-            href="https://www.linkedin.com/in/javier-molpeceres-gómez"
-            target="_blank"
-            >Javier Molpeceres</a
-          >
-        </td>
-      </tr>
+      <table style="max-width: 500px" align="center">
+        <tr class="header">
+          <td style="padding: 40px">Congratz you are invited!</td>
+        </tr>
+        <tr class="content">
+          <td style="padding: 10px">
+            <p>
+              Hi <b>{{ .email }}</b>, <br />
+              This is your invitation code to Bebma Portal
+            </p>
+          </td>
+        </tr>
+        <tr class="content">
+          <td style="padding: 10px; text-align: center">
+            <p><b>{{.code}}</b></p>
+          </td>
+        </tr>
+        <tr class="footer">
+          <td style="padding: 40px">
+            Designed by
+            <a
+              href="https://www.linkedin.com/in/javier-molpeceres-gómez"
+              target="_blank"
+              >Javier Molpeceres</a
+            >
+          </td>
+        </tr>
+      </table>
     </table>
   </body>
 </html>

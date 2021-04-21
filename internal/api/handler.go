@@ -16,10 +16,7 @@ func (api *API) CreateInvitation(c echo.Context) error {
 	invitationRequest := InvitationRequest{}
 	err := c.Bind(&invitationRequest)
 	if err == nil {
-		created, err := api.service.CreateInvitation(invitationRequest.Invitation, invitationRequest.ClientData)
-		if err != nil {
-			return c.JSON(500, "error creating invitation")
-		}
+		created := api.service.CreateInvitation(invitationRequest.Invitation, invitationRequest.ClientData)
 		if created {
 			return c.JSON(200, true)
 		}
