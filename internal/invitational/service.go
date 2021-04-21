@@ -1,21 +1,26 @@
 package invitational
 
+import "github.com/jamolpe/invitational-generator/internal/mailer"
+
 type InvitationalService interface {
-	CreateInvitation(invitation Invitation) (bool, error)
+	CreateInvitation(invitation Invitation, client mailer.MailClient) (bool, error)
 	GetSentInvitations() (*[]Invitation, error)
 }
 
 type InvitationService struct {
-	repo InvitationalRepository
+	mailer mailer.Mailer
+	repo   InvitationalRepository
 }
 
 func New(repo InvitationalRepository) InvitationalService {
-	return &InvitationService{repo}
+	mailer := mailer.New()
+	return &InvitationService{repo: repo, mailer: mailer}
 }
 
-func (inv *InvitationService) CreateInvitation(invitation Invitation) (bool, error) {
+func (inv *InvitationService) CreateInvitation(invitation Invitation, client mailer.MailClient) (bool, error) {
 	saved, err := inv.repo.SaveInvitation(invitation)
-	if err != nil {
+	errMail := inv.mailer.Send("./templates/template.html", map[string]string{"username": "user name"}, mailer.MailClient{To: []string{invitation.Email}, Subject: "invitation", Body: ""})
+	if err != nil || errMail != nil {
 		return false, err
 	}
 	return saved, nil

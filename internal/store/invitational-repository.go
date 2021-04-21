@@ -11,7 +11,7 @@ import (
 )
 
 func createInvitationalCollection(database *mongo.Database) *mongo.Collection {
-	invitationalCollectionName := os.Getenv("AUCTIONER_COLLECTION")
+	invitationalCollectionName := os.Getenv("INVITATION_COLLECTION")
 	invitationalCollection := database.Collection(invitationalCollectionName)
 	return invitationalCollection
 }

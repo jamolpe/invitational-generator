@@ -1,7 +1,6 @@
 package api
 
 import (
-	"github.com/jamolpe/invitational-generator/internal/invitational"
 	"github.com/labstack/echo"
 )
 
@@ -14,10 +13,10 @@ func (api *API) GetInvitations(c echo.Context) error {
 }
 
 func (api *API) CreateInvitation(c echo.Context) error {
-	invitationRequest := invitational.Invitation{}
+	invitationRequest := InvitationRequest{}
 	err := c.Bind(&invitationRequest)
-	if err != nil {
-		created, err := api.service.CreateInvitation(invitationRequest)
+	if err == nil {
+		created, err := api.service.CreateInvitation(invitationRequest.Invitation, invitationRequest.ClientData)
 		if err != nil {
 			return c.JSON(500, "error creating invitation")
 		}
