@@ -18,10 +18,8 @@ func createInvitationalCollection(database *mongo.Database) *mongo.Collection {
 
 func (r *repository) SaveInvitation(invitation invitational.Invitation) {
 	insertResult, err := r.invitationalCollection.InsertOne(context.TODO(), invitation)
-	if err != nil {
+	if err != nil && insertResult == nil {
 		fmt.Println("[Error - repository] an error ocurred creating a invitation in the database")
-	}
-	if insertResult != nil {
 	}
 	fmt.Println("[OK] - repository] saved in database")
 }
