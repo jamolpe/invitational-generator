@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Bebma - Invitation code</title>
+    <style type="text/css">
+      .header {
+        height: 40px;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .content {
+        height: 100px;
+        font-size: 18px;
+        line-height: 30px;
+        max-width: 500px;
+      }
+      .footer {
+        text-transform: uppercase;
+        text-align: center;
+        height: 40px;
+        font-size: 14px;
+        font-style: italic;
+      }
+      .footer a {
+        color: #000000;
+        text-decoration: none;
+        font-style: normal;
+      }
+    </style>
+  </head>
+  <body bgcolor="#009587">
+    <table
+      bgcolor="#FFFFFF"
+      width="100%"
+      border="0"
+      cellspacing="0"
+      cellpadding="0"
+      align="center"
+    >
+      <table style="max-width: 500px" align="center">
+        <tr class="header">
+          <td style="padding: 40px">Congratz you are invited!</td>
+        </tr>
+        <tr class="content">
+          <td style="padding: 10px">
+            <p>
+              Hi <b>{{ .email }}</b>, <br />
+              This is your invitation code to Bebma Portal
+            </p>
+          </td>
+        </tr>
+        <tr class="content">
+          <td style="padding: 10px; text-align: center">
+            <p><b>{{.code}}</b></p>
+          </td>
+        </tr>
+        <tr class="footer">
+          <td style="padding: 40px">
+            Designed by
+            <a
+              href="https://www.linkedin.com/in/javier-molpeceres-gómez"
+              target="_blank"
+              >Javier Molpeceres</a
+            >
+          </td>
+        </tr>
+      </table>
+    </table>
+  </body>
+</html>

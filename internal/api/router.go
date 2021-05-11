@@ -11,7 +11,7 @@ func (api *API) Router() {
 	e := echo.New()
 	defineConfiguration(e)
 	api.defineRoutes(e)
-	e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
+	e.Logger.Fatal(e.Start(":" + os.Getenv("SERVICE_PORT")))
 }
 
 func defineConfiguration(e *echo.Echo) {

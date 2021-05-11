@@ -11,21 +11,17 @@ import (
 )
 
 func createInvitationalCollection(database *mongo.Database) *mongo.Collection {
-	invitationalCollectionName := os.Getenv("AUCTIONER_COLLECTION")
+	invitationalCollectionName := os.Getenv("INVITATION_COLLECTION")
 	invitationalCollection := database.Collection(invitationalCollectionName)
 	return invitationalCollection
 }
 
-func (r *repository) SaveInvitation(invitation invitational.Invitation) (bool, error) {
+func (r *repository) SaveInvitation(invitation invitational.Invitation) {
 	insertResult, err := r.invitationalCollection.InsertOne(context.TODO(), invitation)
-	if err != nil {
+	if err != nil && insertResult == nil {
 		fmt.Println("[Error - repository] an error ocurred creating a invitation in the database")
-		return false, err
 	}
-	if insertResult != nil {
-		return true, nil
-	}
-	return false, nil
+	fmt.Println("[OK] - repository] saved in database")
 }
 func (r *repository) GetInvitations() ([]invitational.Invitation, error) {
 	var dbinvitations []invitational.Invitation
